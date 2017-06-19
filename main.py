@@ -4,6 +4,7 @@ import sys
 from PyQt4 import QtGui, QtCore
 import time
 import design  # imports the generated design code
+from drive_api import *
 import os
 
 
@@ -33,11 +34,30 @@ class MainApp(QtGui.QMainWindow, design.Ui_MainWindow):
 		super(self.__class__, self).__init__()
 		self.setupUi(self)
 
+		self.uploadBtn.clicked.connect(self.single_upload)
 		self.removeFileBtn.clicked.connect(self.remove_file_from_list)
 		self.clearListBtn.clicked.connect(self.clear_file_list)
 		self.selectFilesBtn.clicked.connect(self.select_files)
 		self.infoBtn.clicked.connect(self.info_popup)
 		self.quitBtn.clicked.connect(self.closeEvent)
+		self.driveAccountBtn.clicked.connect(self.change_drive_account)
+		self.uploadPopup = SingleUploadPopup()
+
+
+	def single_upload(self):
+		def close_popup():
+			self.uploadPopup.hide()
+
+		self.connect(self.uploadPopup, QtCore.SIGNAL('close_popup()'), close_popup)
+		self.uploadPopup.setFixedSize(300, 300)
+		self.uploadPopup.show()
+
+
+	def change_drive_account(self):
+		if os.path.exists("mycreds.txt"):
+			os.remove("mycreds.txt")
+
+		self.uploadPopup.drive_startup()
 
 
 	def select_files(self):
