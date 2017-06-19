@@ -53,7 +53,7 @@ class ModListView(QtGui.QListWidget):
                     links.append(str(url.toLocalFile()))
                 except:
                     fname = str(url.toLocalFile().toUtf8())
-                    QtGui.QMessageBox.warning(self, 'Error', 'File %s contains non ASCII characters and will, therefore, not be added.' % fname, QtGui.QMessageBox.Ok)
+                QtGui.QMessageBox.warning(self, 'Error', 'File %s contains non ASCII characters and will, therefore, not be added.' % fname, QtGui.QMessageBox.Ok)
             self.emit(QtCore.SIGNAL("dropped"), links)
         else:
             event.ignore()
@@ -64,11 +64,11 @@ class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(419, 390)
+        MainWindow.resize(419, 377)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.horizontalLayoutWidget = QtGui.QWidget(self.centralwidget)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(9, 9, 401, 374))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(9, 9, 401, 361))
         self.horizontalLayoutWidget.setObjectName(_fromUtf8("horizontalLayoutWidget"))
         self.horizontalLayout = QtGui.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
@@ -104,9 +104,6 @@ class Ui_MainWindow(object):
         self.clearListBtn = QtGui.QPushButton(self.horizontalLayoutWidget)
         self.clearListBtn.setObjectName(_fromUtf8("clearListBtn"))
         self.verticalLayout.addWidget(self.clearListBtn)
-        self.driveAccountBtn = QtGui.QPushButton(self.horizontalLayoutWidget)
-        self.driveAccountBtn.setObjectName(_fromUtf8("driveAccountBtn"))
-        self.verticalLayout.addWidget(self.driveAccountBtn)
         self.infoBtn = QtGui.QPushButton(self.horizontalLayoutWidget)
         self.infoBtn.setObjectName(_fromUtf8("infoBtn"))
         self.verticalLayout.addWidget(self.infoBtn)
@@ -128,7 +125,6 @@ class Ui_MainWindow(object):
         self.selectFilesBtn.setText(_translate("MainWindow", "Select Files", None))
         self.removeFileBtn.setText(_translate("MainWindow", "Remove File", None))
         self.clearListBtn.setText(_translate("MainWindow", "Clear List", None))
-        self.driveAccountBtn.setText(_translate("MainWindow", "Drive Account", None))
         self.infoBtn.setText(_translate("MainWindow", "Info", None))
         self.quitBtn.setText(_translate("MainWindow", "Quit", None))
 
@@ -146,4 +142,4 @@ class Ui_MainWindow(object):
                     icon = QtGui.QIcon(pixmap)
                     item = QtGui.QListWidgetItem(url_base, self.fileListWidget)
                     item.setIcon(icon)        
-                    item.setStatusTip(url)
+                    item.setStatusTip(url)        

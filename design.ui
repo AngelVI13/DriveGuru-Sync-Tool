@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>419</width>
-    <height>377</height>
+    <height>390</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>9</x>
       <y>9</y>
       <width>401</width>
-      <height>361</height>
+      <height>374</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="6,2">
@@ -81,6 +81,13 @@
         <widget class="QPushButton" name="clearListBtn">
          <property name="text">
           <string>Clear List</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="driveAccountBtn">
+         <property name="text">
+          <string>Drive Account</string>
          </property>
         </widget>
        </item>
